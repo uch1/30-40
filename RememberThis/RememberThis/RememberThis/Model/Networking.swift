@@ -6,4 +6,9 @@
 //  Copyright © 2017 Uchenna  Aguocha. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class Networking {
+    
+    
+}
