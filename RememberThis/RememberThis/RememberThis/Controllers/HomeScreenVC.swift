@@ -32,7 +32,7 @@ class HomeScreenVC: UIViewController {
     */
     
     //MARK: - Methods
-    
+    //
     @IBAction func playButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "segueToGameLoadVC", sender: self)
     }
