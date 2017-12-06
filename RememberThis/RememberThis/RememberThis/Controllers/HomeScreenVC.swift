@@ -36,7 +36,7 @@ class HomeScreenVC: UIViewController {
     @IBAction func playButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "segueToGameLoadVC", sender: self)
     }
-    
+    //
     @IBAction func learnButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "segueToLearnAboutVC", sender: self)
     }
