@@ -72,7 +72,7 @@ class GameScreenVC: UIViewController {
     }
     
     // Once ready button is tapped, the timer will stop and
-    // GameScreenVC will transition to the GamePlayVC
+    // GameScreenVC will transition to the GamePlayVC//
     @IBAction func readyButtonTapped(_ sender: UIButton) {
         if self.resumeTapped == false {
             timer.invalidate()
