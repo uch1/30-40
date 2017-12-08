@@ -80,7 +80,7 @@ class GameScreenVC: UIViewController {
         }
         self.performSegue(withIdentifier: "segueToGamePlayVC", sender: self.people)
     }
-    
+    //
     @IBAction func xbuttonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "segueXtoHomeScreen", sender: GameScreenVC.self)
     }
