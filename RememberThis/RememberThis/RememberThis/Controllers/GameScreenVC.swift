@@ -56,7 +56,7 @@ class GameScreenVC: UIViewController {
         
         let layout = self.personCard.collectionViewLayout as! UPCarouselFlowLayout
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 20)
-        
+        //
         // Create an instance of Networking to GET data from API
         let networking = Networking()
         networking.fetch(resource: .results) { (data) in
