@@ -217,7 +217,7 @@ extension GamePlayVC {
             timerLabel.text = timeString(time: TimeInterval(seconds)) //This will update the label.
         }
     }
-    
+    //
     // timeString will format the time hours: minutes: seconds
     func timeString(time: TimeInterval) -> String {
         //let hours = Int(time) / 3600
