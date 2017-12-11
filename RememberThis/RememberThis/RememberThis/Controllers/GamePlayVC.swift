@@ -205,7 +205,7 @@ extension GamePlayVC {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GamePlayVC.updateTimer), userInfo: nil, repeats: true)
         isTimerRunning = true
     }
-    
+    //
     // why is there an @objc keyword?
     @objc func updateTimer() {
         if seconds < 1 {
