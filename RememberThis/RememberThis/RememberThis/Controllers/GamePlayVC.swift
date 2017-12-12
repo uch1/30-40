@@ -200,7 +200,7 @@ class GamePlayVC: UIViewController {
 }
 
 extension GamePlayVC {
-    
+    // runtimer
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GamePlayVC.updateTimer), userInfo: nil, repeats: true)
         isTimerRunning = true
