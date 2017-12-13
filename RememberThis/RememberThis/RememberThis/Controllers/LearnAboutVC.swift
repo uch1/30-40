@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import UPCarouselFlowLayout
 
 class LearnAboutVC: UIViewController {
+    
+    let layout = UPCarouselFlowLayout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,3 +36,4 @@ class LearnAboutVC: UIViewController {
     */
 
 }
+
