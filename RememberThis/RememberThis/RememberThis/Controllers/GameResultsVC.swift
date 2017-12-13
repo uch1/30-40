@@ -35,7 +35,7 @@ class GameResultsVC: UIViewController {
 }
 extension GameResultsVC: UICollectionViewDataSource {
     
-    
+    //
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
