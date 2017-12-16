@@ -26,7 +26,7 @@ class GameResultsVC: UIViewController {
     @IBAction func playAgainButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "segueToGameScreenVC", sender: GameResultsVC.self)
     }
-    
+    // Exit
     @IBAction func exitButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "segueToHomeScreenVC", sender: GameResultsVC.self)
     }
