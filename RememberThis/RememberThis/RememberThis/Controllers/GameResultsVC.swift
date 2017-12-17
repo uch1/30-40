@@ -22,7 +22,7 @@ class GameResultsVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    // Play Again Button
     @IBAction func playAgainButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "segueToGameScreenVC", sender: GameResultsVC.self)
     }
