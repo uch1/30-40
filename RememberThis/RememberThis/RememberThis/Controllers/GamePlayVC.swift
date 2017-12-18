@@ -27,7 +27,7 @@ class GamePlayVC: UIViewController {
     
     
     // Timer
-    var seconds = 5
+    var seconds = 20
     var timer = Timer()
     var isTimerRunning = false
     var resumeTapped = false
@@ -75,6 +75,7 @@ class GamePlayVC: UIViewController {
     }
     
     func update() {
+        // Once called, update() changes the random name and photo
         self.randomGivenName = getRandomName()
         getNameAndPhoto()
         guessNameLabel.text = "Who is it? \(randomGivenName)?"
@@ -82,9 +83,15 @@ class GamePlayVC: UIViewController {
     }
     
     func getNameAndPhoto() {
-        //Want to get 
+        /* generates a random name and photo using an indexpath
+           fullName: String Interpolation of first and last names
+         */
+        
         let index = Int(arc4random()) % people.count
-        let fullName = "\(people[index].firstName) \(people[index].lastName)"
+        
+        
+        let fullName = "\(people[index].firstName.capitalized) \(people[index].lastName.capitalized)"
+        
         self.actualName = fullName
         self.photo = people[index].photo!
         people.remove(at: index)
@@ -92,11 +99,11 @@ class GamePlayVC: UIViewController {
     }
     
     func getRandomName() -> String {
-        print(people.count)
+        //print(people.count)
         let index = Int(arc4random()) % people.count
-        print(index)
+        //print(index)
         //let fullName = people[index].firstName + " " + people[index].lastName
-        let fullName = ("\(people[index].firstName) \(people[index].lastName)")
+        let fullName = ("\(people[index].firstName.capitalized) \(people[index].lastName.capitalized)")
         return fullName
     }
     
@@ -176,6 +183,19 @@ class GamePlayVC: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "segueToGameResultsVC" {
+            let gameResults = segue.destination as! GameResultsVC
+            gameResults.guesses = self.guesses
+            
+        }
+    }
+    
+    
+    @IBAction func xButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "fromGamePlaytoHomeScreen", sender: GamePlayVC.self)
+    }
     
 }
 
@@ -190,17 +210,8 @@ extension GamePlayVC {
     @objc func updateTimer() {
         if seconds < 1 {
             timer.invalidate()
-            
-//            let gameResultsVC = storyboard?.instantiateViewController(withIdentifier: "GameResultsVC") as! GameResultsVC
-//            gameResultsVC.guesses = self.guesses
-//
-//            self.navigationController?.pushViewController(gameResultsVC, animated: true)
-//            let timeOutAlert = UIAlertController(title: "TIME'S UP", message: "Please make better use of your time", preferredStyle: .alert)
-//            let cancelAction = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-//            let cancelAction2 = UIAlertAction(title: "Nah Homie", style: .destructive, handler: nil)
-//            timeOutAlert.addAction(cancelAction)
-//            timeOutAlert.addAction(cancelAction2)
-//            self.present(timeOutAlert, animated: true, completion: nil)
+            performSegue(withIdentifier: "segueToGameResultsVC", sender: self.guesses)
+
         } else {
             seconds -= 1 //This will decrement(count down) the seconds.
             timerLabel.text = timeString(time: TimeInterval(seconds)) //This will update the label.
@@ -216,6 +227,9 @@ extension GamePlayVC {
         return String(format: "%2i", seconds)
     }
     
+    
+    
+    
 }
 
 //extension GamePlayVC: PersonDelegate{
@@ -225,7 +239,16 @@ extension GamePlayVC {
 //    }
 //}
 
-
+//            let gameResultsVC = storyboard?.instantiateViewController(withIdentifier: "GameResultsVC") as! GameResultsVC
+//            gameResultsVC.guesses = self.guesses
+//
+//            self.navigationController?.pushViewController(gameResultsVC, animated: true)
+//            let timeOutAlert = UIAlertController(title: "TIME'S UP", message: "Please make better use of your time", preferredStyle: .alert)
+//            let cancelAction = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
+//            let cancelAction2 = UIAlertAction(title: "Nah Homie", style: .destructive, handler: nil)
+//            timeOutAlert.addAction(cancelAction)
+//            timeOutAlert.addAction(cancelAction2)
+//            self.present(timeOutAlert, animated: true, completion: nil)
 
 
 

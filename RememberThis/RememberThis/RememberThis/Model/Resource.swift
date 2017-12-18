@@ -26,7 +26,7 @@ enum Resource {
     func path() -> String {
         switch self {
         case .results:
-            return "1.1/?results=5" // /1.1
+            return "1.1/?nat=us&results=5" // /1.1
         }
     }
     

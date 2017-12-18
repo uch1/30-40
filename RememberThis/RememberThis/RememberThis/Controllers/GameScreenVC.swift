@@ -53,7 +53,10 @@ class GameScreenVC: UIViewController {
         personCard.delegate = self
         personCard.dataSource = self
         //delegate = self as? PersonDelegate
-
+        
+        let layout = self.personCard.collectionViewLayout as! UPCarouselFlowLayout
+        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 20)
+        
         // Create an instance of Networking to GET data from API
         let networking = Networking()
         networking.fetch(resource: .results) { (data) in
@@ -78,6 +81,11 @@ class GameScreenVC: UIViewController {
         self.performSegue(withIdentifier: "segueToGamePlayVC", sender: self.people)
     }
     
+    @IBAction func xbuttonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "segueXtoHomeScreen", sender: GameScreenVC.self)
+    }
+    
+    
 }
 
 //=================================== CollectionView Implementation ==================================================
@@ -93,12 +101,12 @@ extension GameScreenVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let persons = people[indexPath.row]
         
-        cell.personNameLabel.text = "\(persons.firstName) \(persons.lastName)"
+        cell.personNameLabel.text = "\(persons.firstName.capitalized) \(persons.lastName.capitalized)"
         
         DispatchQueue.main.async {
             cell.personImageView?.getImageFromURL(url: persons.photo!)
         }
-        
+        cell.layer.cornerRadius = 5
         return cell
     }
     
